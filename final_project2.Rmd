@@ -1,0 +1,89 @@
+---
+title: "Final Project 2:R Markdown"
+author: "Marian Mumin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Introduction - the what and why
+
+This dataset includes a variety of demographic and health-related variables, such as stress level, life satisfaction, immigration status, nativity, self-reported health satisfaction, and behavioral indicators like drug use.
+
+The purpose of my analysis is to examine how immigration status (identifying as an immigrant) related to perceived health outcomes as well as compares to the percieved health outcomes of those classified under nativity. 
+
+Research questions: 
+1. Explore the distribution of health satisfaction across immigrant and non-immigrant groups. 
+2. investigate the relationship between immigration status and drug use/abuse, compare foreign and native-born individuals. 
+
+My goal is to understand patterns of health satisfaction and risk behaviors among immigrants versus non-immigrants. 
+
+```{r, laod-data, echo = FALSE, message=FALSE, warning=FALSE}
+
+# Downloading packages necessary for codes 
+
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(dplyr)
+library(gtsummary)
+library(gt)
+library(kableExtra)
+
+#Reading in my data
+health_data <- read.csv("data/health_dataset.csv")
+
+```
+
+```{r birth_country_recode, echo = FALSE}
+
+# For future reference incase i want to use birth_country in general or as a comparison for proper birth place identification
+health_data <- health_data %>%
+  mutate(
+    Birth_country = factor(
+      Birth_country,
+      levels = c(1, 2, 3),
+      labels = c("Canada", "Outside Canada", "Not stated")
+    )
+  )
+
+```
+
+# Table: Summary of Health Satisfaction by Immigration Status
+## Tabular Analysis
+The table below shows the distribution of self-reported life satisfaction scores among immigrants and native-born respondents  
+
+```{r, table1, echo = FALSE, message=FALSE, warning=FALSE}
+
+# Table analyzing Life Satisfaction and sense of belonging by immigrant status (Canadian Born vs Landed immigrant) 
+
+table1 <- readRDS( 
+ here::here("output/table1.rds") 
+  )
+table1
+```
+
+## Graphical Analysis 
+
+The figure below visualizes the distribution of life satisfaction scores for immigrants and native-born respondents. I used a boxplot to visualize those comparisons. 
+
+```{r sense of belonging and life-satisfaction figure, fig.align="center", out.width="600px", echo=FALSE, message=FALSE, warning=FALSE}
+
+Figure1 <- readRDS( 
+ here::here("output/Figure1.rds") 
+  )
+Figure1
+```
+
+## Graph 2: bar graph to display general health stutus between immigrants and canadian born participants 
+
+```{r general_health_plot, fig.align="center", out.width="600px", echo=FALSE, message=FALSE, warning=FALSE} 
+# Second graph 
+
+Figure2 <- readRDS( 
+ here::here("output/Figure2.rds") 
+  )
+Figure2
+```
+ 
+
+
