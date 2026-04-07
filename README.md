@@ -23,7 +23,8 @@ README file - containing all details of my repository for my final project
 
 `Makefile`
 
-  - contains rules for building my final report
+  - contains rules for building my final report 
+  
   
 ## structure of my Repository
 - code (contains all my codes to make my table and figure)
@@ -33,4 +34,7 @@ README file - containing all details of my repository for my final project
 - output (contains the rendered figures and tables and is the results of my codes (for me 2 figures and a table)) 
 - README.md (explains the contents of my repository)
 
-
+## Here is how to create my report
+- first run 'make install' 
+- then run 'make clean' 
+- then make 'make' 

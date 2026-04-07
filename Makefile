@@ -16,7 +16,9 @@ output/Figure1.rds: code/Figure1.R
 output/Figure2.rds: code/Figure2.R
 	Rscript code/Figure2.R
 	
-
 .PHONY: clean
 clean:
 	rm -f output/*.rds && rm -f final_project2.html 
+	
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
