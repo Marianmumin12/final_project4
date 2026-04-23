@@ -50,7 +50,8 @@ health_data <- health_data %>%
 
 # Table: Summary of Health Satisfaction by Immigration Status
 ## Tabular Analysis
-The table below shows the distribution of self-reported life satisfaction scores among immigrants and native-born respondents  
+
+The table below shows the distribution of self-reported life satisfaction scores among immigrants and native-born respondents.It reveals that "Community Belonging" is statistically significant (p < 0.001), with immigrants reporting a slightly higher "Very strong" belonging (23%) compared to Canadian-born respondents (22%). Interestingly, while the mean Life Satisfaction score is identical at 8.06 for both groups, the p-value of 0.012 suggests that the underlying distribution of these scores differs significantly between immigrants and native-born individuals. This indicates that while the "average" experience is similar, the spread or frequency of specific scores varies across the two populations.  
 
 ```{r, table1, echo = FALSE, message=FALSE, warning=FALSE}
 
@@ -64,7 +65,7 @@ table1
 
 ## Graphical Analysis 
 
-The figure below visualizes the distribution of life satisfaction scores for immigrants and native-born respondents. I used a boxplot to visualize those comparisons. 
+The figure below visualizes the distribution of life satisfaction scores for immigrants and native-born respondents. I used a boxplot to visualize those comparisons.my Graph 1 shows that the median life satisfaction sits at the same level for both groups. However, the whiskers and potential outliers likely highlight the slight distributional differences noted in the Wilcoxon rank-sum test from the table. By using a boxplot, we can see that despite the stresses of immigration, the interquartile range for satisfaction remains remarkably stable and comparable to those born in Canada. 
 
 ```{r sense of belonging and life-satisfaction figure, fig.align="center", out.width="600px", echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -75,6 +76,8 @@ Figure1
 ```
 
 ## Graph 2: bar graph to display general health stutus between immigrants and canadian born participants 
+
+The bar graph provides clear evidence of the "Healthy Immigrant Effect," as immigrants report "Excellent" health at a higher rate (23.1%) than Canadian-born participants (19%). Furthermore, Canadian-born respondents show higher percentages in the "Fair" and "Poor" categories, totaling 15.3% compared to only 12.5% for immigrants. These results directly answer the first research question, showing that while both groups are generally healthy, the immigrant group maintains a slight but distinct advantage in self-reported physical well-being.
 
 ```{r general_health_plot, fig.align="center", out.width="600px", echo=FALSE, message=FALSE, warning=FALSE} 
 # Second graph 
