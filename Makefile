@@ -19,7 +19,7 @@ output/Figure2.rds: code/Figure2.R
 .PHONY: clean
 
 clean:
-	rm -f output/*.rds && rm -f final_project2.html 
+	rm -f output/*.rds && rm -rf report/
 	
 #docker 
 IMAGE = marianmumin12/final_project2-image
