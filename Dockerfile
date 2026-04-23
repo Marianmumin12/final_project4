@@ -1,5 +1,4 @@
-FROM rocker/tidyverse:4.5.2 AS base
-
+FROM rocker/tidyverse:4.5.1 AS base
 
 RUN apt-get update && apt-get install -y curl
 
@@ -15,15 +14,17 @@ COPY renv/activate.R renv/activate.R
 COPY renv/settings.json renv/settings.json
 
 RUN mkdir renv/.cache
-ENV RENV_PATHS_CACHE renv/.cache
+ENV RENV_PATHS_CACHE=renv/.cache
 
+ENV RENV_CONFIG_INSTALL_STAGED=FALSE
 RUN Rscript -e "renv::restore(prompt = FALSE)"
 
 
 ###### DO NOT EDIT STAGE 1 BUILD LINES ABOVE ######
 
 
-FROM --platform=linux/amd64 rocker/tidyverse:4.5.2
+FROM rocker/tidyverse:4.5.1
+
 RUN mkdir -p /home/rstudio/project 
 
 RUN mkdir -p /home/rstudio/project/code \
@@ -31,7 +32,7 @@ RUN mkdir -p /home/rstudio/project/code \
   
 WORKDIR /home/rstudio/project 
 
-COPY --from=base /home/rstudio/project /home/rstudio/project
+COPY --from=base /home/rstudio/project .
 
 COPY data/ data/
 COPY code/ code/ 
@@ -41,4 +42,4 @@ COPY Makefile Makefile
 RUN mkdir -p report 
 RUN apt-get update && apt-get install -y pandoc 
 
-ENTRYPOINT ["sh", "-c", "Rscript -e 'renv::restore(prompt = FALSE)' && make && cp final_project2.html report/"]
+CMD ["make", "report"]

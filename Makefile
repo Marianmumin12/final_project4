@@ -1,8 +1,14 @@
 # Rule to build the final report	
-final_project2.html: final_project2.Rmd output/table1.rds output/Figure1.rds \
+all: report/final_project2.html
+report: report/final_project2.html
+
+report/final_project2.html: final_project2.Rmd output/table1.rds output/Figure1.rds \
 output/Figure2.rds
-	Rscript -e 'rmarkdown::render("final_project2.Rmd")'
+	mkdir -p report
+	Rscript -e 'rmarkdown::render("final_project2.Rmd", output_dir="report")'
 	
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
 	
 # Rule to create the table
 output/table1.rds: code/table1.R
@@ -16,7 +22,7 @@ output/Figure1.rds: code/Figure1.R
 output/Figure2.rds: code/Figure2.R
 	Rscript code/Figure2.R
 	
-.PHONY: clean
+.PHONY: clean all run report
 
 clean:
 	rm -f output/*.rds && rm -rf report/
@@ -30,5 +36,3 @@ run:
 	-v "$$(pwd)/report:/home/rstudio/project/report" \
 	$(IMAGE)
 	
-install:
-	Rscript -e "renv::restore(prompt = FALSE)"
