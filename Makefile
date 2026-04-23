@@ -17,8 +17,18 @@ output/Figure2.rds: code/Figure2.R
 	Rscript code/Figure2.R
 	
 .PHONY: clean
+
 clean:
 	rm -f output/*.rds && rm -f final_project2.html 
+	
+#docker 
+IMAGE = marianmumin12/final_project2-image
+
+run:	
+	mkdir -p report 
+	docker run --rm \
+	-v "$$(pwd)/report:/home/rstudio/project/report" \
+	$(IMAGE)
 	
 install:
 	Rscript -e "renv::restore(prompt = FALSE)"

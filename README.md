@@ -1,8 +1,22 @@
+# Marian Mumin final Report 
+
 README file - containing all details of my repository for my final project 
 
 ------------------------------------------------------------------------
+## How to build Docker Image 
 
-## Initial code description
+The complete, built image: https://hub.docker.com/repository/docker/marianmumin12/final_project2-image/general
+
+To build the image locally: 
+1. Run "docker push marianmumin12/final_project2-image:latest" in terminal (make sure to include .)
+
+
+## To build report (Docker)
+
+1. Runn "make clean" then "make run" (for Mac users) and "make run-windows" (for Windows users)
+   The final report will be generated in a folder called 'report/'
+
+## Initial code description (local/manual)
 
 `code/table1.R`
   - generates code for my table that analyzes and gives data for life satisfaction by immigrantion status. 
@@ -38,3 +52,6 @@ README file - containing all details of my repository for my final project
 - first run 'make install' 
 - then run 'make clean' 
 - then make 'make' 
+
+
+
